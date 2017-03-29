@@ -1,10 +1,26 @@
-from django.conf.urls import patterns, include, url
+"""project URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.10/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""
+from django.conf.urls import url
 from django.contrib import admin
-
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'project.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
-)
+from calc import views
+urlpatterns = [
+	url(r'^$', views.barra, name='Pagina de inicio'),
+	url(r'^(\d+)\+(\d+)', views.suma, name='Calculamos la suma'),
+	url(r'^(\d+)\-(\d+)', views.resta, name='Calculamos la resta'),
+	url(r'^(\d+)\*(\d+)', views.multi, name='Calculamos la multiplicacion'),
+	url(r'^(\d+)\/(\d+)', views.div, name='Calculamos la division'),
+    url(r'^admin/', admin.site.urls),
+]
